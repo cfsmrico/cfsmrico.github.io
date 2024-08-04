@@ -64,5 +64,7 @@ export class OneRepMaxComponent {
     this.estimates.push({percentage: .78, weight: this.oneRepMax * .78, reps: 8});
     this.estimates.push({percentage: .76, weight: this.oneRepMax * .76, reps: 9});
     this.estimates.push({percentage: .75, weight: this.oneRepMax * .75, reps: 10});
+    this.estimates.push({percentage: .72, weight: this.oneRepMax * .72, reps: 11});
+    this.estimates.push({percentage: .70, weight: this.oneRepMax * .70, reps: 12});
   }
 };

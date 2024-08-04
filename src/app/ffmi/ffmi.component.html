@@ -41,7 +41,7 @@
       <br />
       <div class="col">
         <p-floatLabel>
-          <p-inputNumber inputId="inchesInput" [(ngModel)]="inches" [showButtons]="true" [min]="2" [max]="500" (ngModelChange)="modelChanged()" />
+          <p-inputNumber inputId="inchesInput" [(ngModel)]="inches" [showButtons]="true" [min]="0" [max]="500" (ngModelChange)="modelChanged()" />
           <label for="inchesInput">Inches</label>
         </p-floatLabel>
       </div>
@@ -55,10 +55,11 @@
     <br />
     <br />
     </div>
-    <p *ngIf="totalBodyFat != 0">Total Body Fat (kg): {{totalBodyFat.toPrecision(4)}}
-    <p *ngIf="fatFreeMass != 0">Fat Free Mass (kg): {{fatFreeMass.toPrecision(4)}}
-    <p *ngIf="fatMassIndex != 0">Fat Mass Index: {{fatMassIndex.toPrecision(4)}}
+    <p *ngIf="totalBodyFat != 0 && unitSystem == 'Metric'">Total Body Fat (kg): {{totalBodyFat.toPrecision(4)}}
+    <p *ngIf="totalBodyFat != 0 && unitSystem == 'Imperial'">Total Body Fat (lb): {{totalBodyFatInLbs.toPrecision(4)}}
+    <p *ngIf="fatFreeMass != 0 && unitSystem == 'Metric'">Fat Free Mass (kg): {{fatFreeMass.toPrecision(4)}}
+      <p *ngIf="fatFreeMass != 0 && unitSystem == 'Imperial'">Fat Free Mass (lb): {{fatFreeMassInLbs.toPrecision(4)}}
     <p *ngIf="ffmi != 0">FFMI: {{ffmi.toPrecision(4)}}
-    <p *ngIf="normalizedFfmi != 0">Normalized FFMI: {{normalizedFfmi.toPrecision(4)}}
+    <p *ngIf="normalizedFfmi != 0" style="font-weight: bold;">Normalized FFMI: {{normalizedFfmi.toPrecision(4)}}
     </p-card>
 </div>

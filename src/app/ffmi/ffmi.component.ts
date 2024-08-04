@@ -43,8 +43,9 @@ export class FfmiComponent {
   bodyfat: number = 13;
   ffmi: number = 0;
   totalBodyFat: number = 0;
+  totalBodyFatInLbs: number = 0;
+  fatFreeMassInLbs: number = 0;
   fatFreeMass: number = 0;
-  fatMassIndex: number = 0;
   normalizedFfmi: number = 0;
 
   modelChanged() {
@@ -59,16 +60,18 @@ export class FfmiComponent {
       this.convertToMetric();
     }
 
+     let heightInMeters = this.height / 100;
      this.totalBodyFat = this.weight * (this.bodyfat / 100);
+     this.totalBodyFatInLbs = this.totalBodyFat * 2.205;
      this.fatFreeMass = this.weight * (1 - (this.bodyfat / 100));
-     this.fatMassIndex = this.totalBodyFat / ((this.height / 100)^2);
-     this.ffmi = this.fatFreeMass / ((this.height / 100)^2);
-     this.normalizedFfmi = this.ffmi + 6.1 * (1.8 - (this.height / 100));
+     this.fatFreeMassInLbs = this.fatFreeMass * 2.205;
+     this.ffmi = this.fatFreeMass / (heightInMeters*heightInMeters);
+     this.normalizedFfmi = this.ffmi + 6.1 * (1.8 - heightInMeters);
   }
 
-  // convers Imperial units to Metric
+  // converts Imperial units to Metric
   convertToMetric() {
-    this.weight = this.weight * 0.45359237
+    this.weight = this.weight / 2.205;
     let totalInches = this.feet * 12 + this.inches;
     this.height = totalInches * 2.54;
   }

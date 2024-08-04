@@ -1,0 +1,64 @@
+<div>
+  <br />
+  <p-card class="grid">
+    <div class="card flex col">
+      <p-floatLabel>
+        <label for="unitSystemSelect">Unit System</label>
+        <p-selectButton [options]='unitSystemOptions' [(ngModel)]='unitSystem' id="unitSystemSelect" />
+      </p-floatLabel>
+    </div>
+    <br />
+    <br />
+    <div *ngIf="unitSystem == 'Metric'" class="col">
+      <p-floatLabel>
+        <p-inputNumber inputId="weightInputKg" [(ngModel)]="weightKg" [showButtons]="true" [min]="2" [max]="500" (ngModelChange)="modelChanged()" />
+        <label for="weightInputKg"> Weight (kilograms)</label>
+      </p-floatLabel>
+    </div>
+    <br />
+    <div *ngIf="unitSystem == 'Imperial'" class="col">
+      <p-floatLabel>
+        <p-inputNumber inputId="weightInputLbs" [(ngModel)]="weightLbs" [showButtons]="true" [min]="2" [max]="500" (ngModelChange)="modelChanged()" />
+        <label for="weightInputLbs"> Weight (pounds)</label>
+      </p-floatLabel>
+    </div>
+    <div *ngIf="unitSystem == 'Metric'">
+      <div class="col">
+        <p-floatLabel *ngIf="unitSystem == 'Metric'">
+          <p-inputNumber inputId="heightInput" [(ngModel)]="height" [showButtons]="true" [min]="2" [max]="500" (ngModelChange)="modelChanged()" />
+          <label for="heightInput">Height (cm)</label>
+        </p-floatLabel>
+      </div>
+    </div>
+    <div *ngIf="unitSystem == 'Imperial'">
+      <br />
+      <div class="col">
+        <p-floatLabel>
+          <p-inputNumber inputId="feetInput" [(ngModel)]="feet" [showButtons]="true" [min]="2" [max]="500" (ngModelChange)="modelChanged()" />
+          <label for="feetInput">Height (feet)</label>
+        </p-floatLabel>
+      </div>
+      <br />
+      <div class="col">
+        <p-floatLabel>
+          <p-inputNumber inputId="inchesInput" [(ngModel)]="inches" [showButtons]="true" [min]="2" [max]="500" (ngModelChange)="modelChanged()" />
+          <label for="inchesInput">Inches</label>
+        </p-floatLabel>
+      </div>
+    </div>
+    <br />
+    <div class="col">
+    <p-floatLabel>
+      <p-inputNumber inputId="bodyFatInput" [(ngModel)]="bodyfat" [showButtons]="true" [min]="5" [max]="50" (ngModelChange)="modelChanged()" />
+      <label for="bodyFatInput">Body fat %</label>
+    </p-floatLabel>
+    <br />
+    <br />
+    </div>
+    <p *ngIf="totalBodyFat != 0">Total Body Fat (kg): {{totalBodyFat.toPrecision(4)}}
+    <p *ngIf="fatFreeMass != 0">Fat Free Mass (kg): {{fatFreeMass.toPrecision(4)}}
+    <p *ngIf="fatMassIndex != 0">Fat Mass Index: {{fatMassIndex.toPrecision(4)}}
+    <p *ngIf="ffmi != 0">FFMI: {{ffmi.toPrecision(4)}}
+    <p *ngIf="normalizedFfmi != 0">Normalized FFMI: {{normalizedFfmi.toPrecision(4)}}
+    </p-card>
+</div>

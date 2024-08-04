@@ -1,0 +1,78 @@
+<div>
+  <br />
+  <p-card class="grid">
+    <div class="card flex col">
+      <p-floatLabel>
+        <label for="unitSystemSelect">Unit System</label>
+        <p-selectButton [options]='unitSystemOptions' [(ngModel)]='unitSystem' id="unitSystemSelect" />
+      </p-floatLabel>
+    </div>
+    <br />
+    <br />
+    <div *ngIf="unitSystem == 'Metric'" class="col">
+      <p-floatLabel>
+        <p-inputNumber inputId="weightInputKg" [(ngModel)]="weightKg" [showButtons]="true" [min]="2" [max]="500" />
+        <label for="weightInputKg"> Weight (kilograms)</label>
+      </p-floatLabel>
+    </div>
+    <div *ngIf="unitSystem == 'Imperial'" class="col">
+      <p-floatLabel>
+        <p-inputNumber inputId="weightInputLbs" [(ngModel)]="weightLbs" [showButtons]="true" [min]="2" [max]="500" />
+        <label for="weightInputLbs"> Weight (pounds)</label>
+      </p-floatLabel>
+    </div>
+    <p-panel header="ActivityLevel" class="col">
+      <p-dropdown [options]="activityLevelOptions" [(ngModel)]="activityLevel" placeholder="Select an Activity Level" optionLabel="label" />
+    </p-panel>
+    <br />
+    <div class="col">
+      <p-checkbox [(ngModel)]="useBodyfat" [binary]="true" inputId="useBodyfatCheckbox" label="Calculate from bodyfat % " />
+    </div>
+    <br />
+    <div *ngIf="useBodyfat" class="col">
+      <p-floatLabel>
+        <p-inputNumber inputId="bodyFatInput" [(ngModel)]="bodyfat" [showButtons]="true" [min]="5" [max]="50" />
+        <label for="bodyFatInput">Body fat %</label>
+      </p-floatLabel>
+    </div>
+    <div *ngIf="!useBodyfat">
+      <div class="col">
+        <p-selectButton [options]='sexOptions' [(ngModel)]='sex' />
+      </div>
+      <br />
+      <br />
+      <div class="col">
+        <p-floatLabel *ngIf="unitSystem == 'Metric'">
+          <p-inputNumber inputId="heightInput" [(ngModel)]="height" [showButtons]="true" [min]="2" [max]="500" />
+          <label for="heightInput">Height (cm)</label>
+        </p-floatLabel>
+      </div>
+      <div class="col">
+        <p-floatLabel *ngIf="unitSystem == 'Imperial'">
+          <p-inputNumber inputId="feetInput" [(ngModel)]="feet" [showButtons]="true" [min]="2" [max]="500" />
+          <label for="feetInput">Height (feet)</label>
+        </p-floatLabel>
+      </div>
+      <br />
+      <div class="col">
+        <p-floatLabel *ngIf="unitSystem == 'Imperial'">
+          <p-inputNumber inputId="inchesInput" [(ngModel)]="inches" [showButtons]="true" [min]="2" [max]="500" />
+          <label for="inchesInput">Inches</label>
+        </p-floatLabel>
+      </div>
+      <br />
+      <br /><br />
+      <div class="col">
+        <p-floatLabel>
+          <p-inputNumber inputId="ageInput" [(ngModel)]="age" [showButtons]="true" [min]="18" [max]="80" />
+          <label for="ageInput">Age (years)</label>
+        </p-floatLabel>
+      </div>
+      <br />
+    </div>
+    <br />
+    <br />
+    <p-button (click)="calcTDEE()">Calculate</p-button>
+    <p *ngIf="tdee != 0"> {{tdee.toPrecision(4)}}</p>
+    </p-card>
+</div>

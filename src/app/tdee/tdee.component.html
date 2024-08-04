@@ -1,13 +1,12 @@
 <div>
   <br />
-  <p-card class="grid">
+  <p-card class="grid" header="TDEE Calculator">
     <div class="card flex col">
       <p-floatLabel>
         <label for="unitSystemSelect">Unit System</label>
         <p-selectButton [options]='unitSystemOptions' [(ngModel)]='unitSystem' id="unitSystemSelect" />
       </p-floatLabel>
     </div>
-    <br />
     <br />
     <div *ngIf="unitSystem == 'Metric'" class="col">
       <p-floatLabel>
@@ -49,19 +48,17 @@
       </div>
       <div class="col">
         <p-floatLabel *ngIf="unitSystem == 'Imperial'">
-          <p-inputNumber inputId="feetInput" [(ngModel)]="feet" [showButtons]="true" [min]="2" [max]="500" />
+          <p-inputNumber inputId="feetInput" [(ngModel)]="feet" [showButtons]="true" [min]="2" [max]="8" />
           <label for="feetInput">Height (feet)</label>
         </p-floatLabel>
       </div>
       <br />
       <div class="col">
         <p-floatLabel *ngIf="unitSystem == 'Imperial'">
-          <p-inputNumber inputId="inchesInput" [(ngModel)]="inches" [showButtons]="true" [min]="2" [max]="500" />
+          <p-inputNumber inputId="inchesInput" [(ngModel)]="inches" [showButtons]="true" [min]="0" [max]="11" />
           <label for="inchesInput">Inches</label>
         </p-floatLabel>
       </div>
-      <br />
-      <br /><br />
       <div class="col">
         <p-floatLabel>
           <p-inputNumber inputId="ageInput" [(ngModel)]="age" [showButtons]="true" [min]="18" [max]="80" />
@@ -71,8 +68,8 @@
       <br />
     </div>
     <br />
-    <br />
     <p-button (click)="calcTDEE()">Calculate</p-button>
-    <p *ngIf="tdee != 0"> {{tdee.toPrecision(4)}}</p>
+    <br />
+    <p *ngIf="tdee != 0" style="font-weight: bold;"> TDEE: {{tdee.toPrecision(4)}}</p>
     </p-card>
 </div>

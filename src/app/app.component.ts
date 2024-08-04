@@ -32,7 +32,7 @@ export class AppComponent implements OnInit {
       },
       {
         label: 'TDEE',
-        icon: 'pi pi-star',
+        icon: 'pi pi-asterisk',
         url: 'tdee'
       },
       {

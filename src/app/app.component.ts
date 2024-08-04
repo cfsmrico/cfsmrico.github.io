@@ -10,13 +10,13 @@ import { MenuItem } from 'primeng/api';
   imports: [
     RouterOutlet,
     ButtonModule,
-    MenubarModule
+    MenubarModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
-  title = 'Iron Brotherhood';
+  title = 'FitCalcs';
   items: MenuItem[] | undefined;
 
   ngOnInit() {
@@ -24,6 +24,11 @@ export class AppComponent implements OnInit {
       {
         label: 'Home',
         icon: 'pi pi-home'
+      },
+      {
+        label: '1RM',
+        icon: 'pi pi-trophy',
+        url: '1rm'
       },
       {
         label: 'TDEE',

@@ -1,0 +1,38 @@
+<div>
+  <p-card header="1-Rep Max Calculator">
+    <br />
+    <p-floatLabel>
+      <p-inputNumber inputId="weight" [(ngModel)]="weight" [showButtons]="true" [min]="1" [max]="1500" />
+      <label for="weight"> Weight</label>
+    </p-floatLabel>
+    <br />
+    <br />
+    <p-floatLabel>
+      <p-inputNumber inputId="reps" [(ngModel)]="reps" [showButtons]="true" [min]="1" [max]="500" />
+      <label for="reps"> Reps</label>
+    </p-floatLabel>
+    <br />
+    <br />
+    <p-button (click)="calc1RM()">Calculate 1RM</p-button>
+  </p-card>
+  <br />
+  <p-card *ngIf="oneRepMax != 0" header="1RM: {{oneRepMax | number: '1.0-0'}}">
+    <br />
+    <p-table [value]="estimates" [tableStyle]="{'min-width': '50rem'}">
+      <ng-template pTemplate="header">
+          <tr>
+              <th>1RM %</th>
+              <th>Weight</th>
+              <th>Reps</th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-estimate>
+          <tr>
+              <td>{{estimate.percentage | percent: '1.0-2'}}</td>
+              <td>{{estimate.weight | number: '1.0-0'}}</td>
+              <td>{{estimate.reps}}</td>
+          </tr>
+      </ng-template>
+    </p-table>
+  </p-card>
+</div>

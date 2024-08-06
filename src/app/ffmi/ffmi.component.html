@@ -53,6 +53,9 @@
       <label for="bodyFatInput">Body fat %</label>
     </p-floatLabel>
     <br />
+    <p-button (click)="modelChanged()">Calculate</p-button>
+    <br />
+    <br />
     <br />
     </div>
     <p *ngIf="totalBodyFat != 0 && unitSystem == 'Metric'">Total Body Fat (kg): {{totalBodyFat.toPrecision(4)}}

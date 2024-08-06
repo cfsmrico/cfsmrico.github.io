@@ -36,11 +36,11 @@ export class FfmiComponent {
   unitSystem = 'Metric';
   weight: number = 0;
   weightKg: number = 90;
-  weightLbs: number = 200;
+  weightLbs: number = 198;
   height: number = 181;
   feet: number = 5;
   inches: number = 11;
-  bodyfat: number = 13;
+  bodyfat: number = 12;
   ffmi: number = 0;
   totalBodyFat: number = 0;
   totalBodyFatInLbs: number = 0;
